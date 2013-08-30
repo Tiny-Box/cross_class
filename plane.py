@@ -22,11 +22,11 @@ while True:
 
 	x, y = pygame.mouse.get_pos()
 
-	if arrow_x < 0:
+	if arrow_x > 800:
 		arrow_x = x + arrow.get_width() / 2
-		arrow_y = y - arrow.get_height() / 2
+		arrow_y = y + arrow.get_height() / 2
 	else:
-		arrow_x -= 5
+		arrow_x += 5
 
 	screen.blit(arrow, (arrow_x, arrow_y))
 
