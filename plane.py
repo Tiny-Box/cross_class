@@ -8,10 +8,21 @@ pygame.display.set_caption("Hello, World!")
 background = pygame.image.load('backg.jpg').convert()
 #要是处理带透明部分 就要用到convert_alpha 而不是convert
 plane = pygame.image.load('dude2.png').convert_alpha()
-arrow = pygame.image.load('bullet.png').convert_alpha()
 
-arrow_x = -1
-arrow_y = 0
+class Bullet():
+	def __init__(self):
+		self.x = -1
+		self.y = 0
+		self.image = pygame.image.load('bullet.png').convert_alpha()
+
+	def move(self):
+		if self.x > 800:
+			mouseX, mouseY = pygame.mouse.get_pos()
+			self.x = mouseX - self.image.get_width() / 2
+			self.y = mouseY + 10
+		else:
+			self.x += 5
+bullet = Bullet()
 
 while True:
 	for event in pygame.event.get():
@@ -22,13 +33,9 @@ while True:
 
 	x, y = pygame.mouse.get_pos()
 
-	if arrow_x > 800:
-		arrow_x = x + arrow.get_width() / 2
-		arrow_y = y + arrow.get_height() / 2
-	else:
-		arrow_x += 5
+	bullet.move()
 
-	screen.blit(arrow, (arrow_x, arrow_y))
+	screen.blit(bullet.image, (bullet.x, bullet.y))
 
 	x -= plane.get_width() / 2
 	y -= plane.get_height() / 2
