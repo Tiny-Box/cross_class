@@ -20,4 +20,4 @@ rabbit and badger
 plane.py
 类似微信的打飞机
 版本库回退直接没了原来的readme
-8.31	将子弹封装成类
+8.31	将子弹封装成类 添加敌人 但是存在bug
