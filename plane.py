@@ -31,12 +31,15 @@ class Enemy:
 		self.y = random.randint(0, 500)
 		self.speed = random.randint(1, 2) + 0.1
 		self.image = pygame.image.load('badguy.png').convert_alpha()
+		self.restart()
 
 	def move(self):
 		if self.x > 0:
 			self.x -= self.speed
 		else:
 			self.x = 850
+			self.restart()
+
 	def restart(self):
 		self.x = 850
 		self.y = random.randint(0, 500)
@@ -57,7 +60,6 @@ while True:
 
 	enemy.move()
 	screen.blit(enemy.image, (enemy.x, enemy.y))
-	enemy.restart()
 
 	x -= plane.get_width() / 2
 	y -= plane.get_height() / 2
