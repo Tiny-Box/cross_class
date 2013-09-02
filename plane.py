@@ -37,6 +37,10 @@ class Enemy:
 			self.x -= self.speed
 		else:
 			self.x = 850
+	def restart(self):
+		self.x = 850
+		self.y = random.randint(0, 500)
+
 enemy = Enemy()
 
 while True:
@@ -52,7 +56,8 @@ while True:
 	screen.blit(bullet.image, (bullet.x, bullet.y))
 
 	enemy.move()
-	screen.blit(enemy.image, (enemy.x, enemy,y))
+	screen.blit(enemy.image, (enemy.x, enemy.y))
+	enemy.restart()
 
 	x -= plane.get_width() / 2
 	y -= plane.get_height() / 2
